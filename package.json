@@ -1,0 +1,46 @@
+{
+  "name": "accent",
+  "description": "A simple library for serializable highlights.",
+  "version": "0.0.1-0",
+  "author": "Miguel Oller <miguel@getshortweb.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/migueloller/accent.git"
+  },
+  "keywords": [
+    "accent",
+    "highlight",
+    "annotation",
+    "selection",
+    "range"
+  ],
+  "dependencies": {
+    "diff-match-patch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "babel-polyfill": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-stage-0": "^6.1.18",
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "diff-match-patch": "^1.0.0",
+    "eslint-config-airbnb": "^1.0.0",
+    "eslint-plugin-react": "^3.10.0",
+    "gulp": "^3.9.0",
+    "gulp-eslint": "^1.1.1",
+    "gulp-sourcemaps": "^1.6.0",
+    "nightmare": "^2.1.4",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "main": "./build/accent.js",
+  "files": [
+    "build/"
+  ],
+  "scripts": {
+    "prepublish": "gulp browserify",
+    "gulp": "gulp"
+  }
+}
