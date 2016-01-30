@@ -1,4 +1,4 @@
-import isText from './isText.js';
+import isText from './../utils/isText.js';
 
 /**
  * @param {Range} range

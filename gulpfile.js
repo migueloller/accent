@@ -34,7 +34,7 @@ gulp.task('browserify', () => {
 
 gulp.task('nightmare', ['browserify'], () => {
   const nightmare = new Nightmare({
-    preload: path.resolve('./build/bundle.js'),
+    preload: path.resolve('./src/test/nightmare.js'),
     show: true,
     fullscreen: true,
   });

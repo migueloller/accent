@@ -1,9 +1,9 @@
 import Highlight from './Highlight.js';
-import Queue from './Queue.js';
-import findRange from './findRange.js';
-import normalFind from './normalFind.js';
-import deserializeRange from './deserializeRange.js';
-import fuzzyStringSearch from './fuzzyStringSearch.js';
+import Queue from './utils/Queue.js';
+import findRange from './range/findRange.js';
+import normalFind from './utils/normalFind.js';
+import deserializeRange from './range/deserializeRange.js';
+import fuzzyStringSearch from './utils/fuzzyStringSearch.js';
 
 class Highlighter {
   queue = new Queue();

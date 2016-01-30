@@ -1,8 +1,8 @@
 import splitRangeBoundaries from './splitRangeBoundaries.js';
 import getRangeTextNodes from './getRangeTextNodes.js';
-import wrap from './wrap.js';
-import {HIGHLIGHT_TAG} from './constants.js';
-import unfold from './unfold.js';
+import wrap from './../utils/wrap.js';
+import {HIGHLIGHT_TAG} from './../constants.js';
+import unfold from './../utils/unfold.js';
 
 /**
  * @param {Range} range

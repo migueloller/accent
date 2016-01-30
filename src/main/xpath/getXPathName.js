@@ -1,4 +1,4 @@
-import isTextLike from './isTextLike.js';
+import isTextLike from './../utils/isTextLike.js';
 
 /**
  * @param {Node} node

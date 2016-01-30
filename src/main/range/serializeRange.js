@@ -1,6 +1,6 @@
-import getXPath from './getXPath.js';
-import isText from './isText.js';
-import getWholeTextUpTo from './getWholeTextUpTo.js';
+import getXPath from './../xpath/getXPath.js';
+import isText from './../utils/isText.js';
+import getWholeTextUpTo from './../utils/getWholeTextUpTo.js';
 
 /**
  * @param {Range} range

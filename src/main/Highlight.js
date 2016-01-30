@@ -1,9 +1,9 @@
-import getNextTextNode from './getNextTextNode.js';
-import serializeRange from './serializeRange.js';
-import highlightRange from './highlightRange.js';
-import bodyIndexOf from './bodyIndexOf.js';
-import deserializeRange from './deserializeRange.js';
-import unfold from './unfold.js';
+import getNextTextNode from './utils/getNextTextNode.js';
+import serializeRange from './range/serializeRange.js';
+import highlightRange from './range/highlightRange.js';
+import bodyIndexOf from './utils/bodyIndexOf.js';
+import deserializeRange from './range/deserializeRange.js';
+import unfold from './utils/unfold.js';
 
 export default class Highlight {
   /**

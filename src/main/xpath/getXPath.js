@@ -1,4 +1,4 @@
-import isHighlight from './isHighlight.js';
+import isHighlight from './../utils/isHighlight.js';
 import getXPathName from './getXPathName.js';
 import getXPathIndex from './getXPathIndex.js';
 

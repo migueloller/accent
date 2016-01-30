@@ -1,6 +1,6 @@
-import evaluateXPath from './evaluateXPath.js';
-import isText from './isText.js';
-import getWholeTextUpTo from './getWholeTextUpTo.js';
+import evaluateXPath from './../xpath/evaluateXPath.js';
+import isText from './../utils/isText.js';
+import getWholeTextUpTo from './../utils/getWholeTextUpTo.js';
 
 /**
  * @param {string} serializedRange

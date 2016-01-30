@@ -1,6 +1,6 @@
-import isTextLike from './isTextLike.js';
-import isHighlight from './isHighlight.js';
-import getTextNodeFromOffset from './getTextNodeFromOffset.js';
+import isTextLike from './../utils/isTextLike.js';
+import isHighlight from './../utils/isHighlight.js';
+import getTextNodeFromOffset from './../utils/getTextNodeFromOffset.js';
 
 /**
  * @param {string} path

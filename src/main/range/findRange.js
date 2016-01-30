@@ -1,6 +1,6 @@
-import getTextNodeFromOffset from './getTextNodeFromOffset.js';
-import getNextTextNode from './getNextTextNode.js';
-import bodyIndexOf from './bodyIndexOf.js';
+import getTextNodeFromOffset from './../utils/getTextNodeFromOffset.js';
+import getNextTextNode from './../utils/getNextTextNode.js';
+import bodyIndexOf from './../utils/bodyIndexOf.js';
 
 /**
  * @param {string} searchValue

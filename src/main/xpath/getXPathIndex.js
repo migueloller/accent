@@ -1,6 +1,6 @@
 import getXPathName from './getXPathName.js';
-import isTextLike from './isTextLike.js';
-import isHighlight from './isHighlight.js';
+import isTextLike from './../utils/isTextLike.js';
+import isHighlight from './../utils/isHighlight.js';
 
 /**
  * @param {Node} node
