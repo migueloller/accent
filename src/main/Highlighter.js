@@ -1,4 +1,5 @@
 import Highlight from './Highlight.js';
+import Promise from 'bluebird';
 import Queue from './utils/Queue.js';
 import findRange from './range/findRange.js';
 import normalFind from './utils/normalFind.js';
@@ -10,21 +11,19 @@ class Highlighter {
 
   /**
    * @param {Range} range
-   * @returns {Highlight}
+   * @returns {Promise}
    */
-  async highlightFromRange(range) {
+  highlightFromRange(range) {
     // clone the range before queing in case it changes
     const clone = range.cloneRange();
 
-    return await this.queue.add(() => {
-      return new Highlight(clone);
-    });
+    return this.queue.add(() => new Highlight(clone));
   }
 
   /**
-   * @returns {?Highlight}
+   * @returns {Promise}
    */
-  async highlightCurrentSelection() {
+  highlightCurrentSelection() {
     // get the selection before queing in case the user deselects
     const sel = getSelection();
 
@@ -32,22 +31,24 @@ class Highlighter {
       // clone the range before queing in case it changes
       const range = sel.getRangeAt(0).cloneRange();
 
-      return await this.queue.add(() => {
+      return this.queue.add(() => {
         sel.removeAllRanges();
         return new Highlight(range);
       });
     }
 
-    return null;
+    return new Promise(resolve => {
+      resolve(null);
+    });
   }
 
   /**
    * @param {string} searchValue
    * @param {number} [fromIndex]
-   * @returns {?Highlight}
+   * @returns {Promise}
    */
-  async highlightFromString(searchValue, fromIndex = 0) {
-    return await this.queue.add(() => {
+  highlightFromString(searchValue, fromIndex = 0) {
+    return this.queue.add(() => {
       let range = findRange(searchValue, fromIndex);
 
       if (range) {
@@ -73,13 +74,13 @@ class Highlighter {
    * @param {string} json.range
    * @param {string} json.text
    * @param {number} json.index
-   * @returns {?Highlight}
+   * @returns {Promise}
    */
-  async highlightFromJson(json) {
+  highlightFromJson(json) {
     // clones the object before queing in case it changes
     const clone = JSON.parse(JSON.stringify(json));
 
-    return await this.queue.add(() => {
+    return this.queue.add(() => {
       let range = deserializeRange(clone.range);
 
       if (range && range.toString() === clone.text) {

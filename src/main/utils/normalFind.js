@@ -9,9 +9,7 @@ import normalIndexMap from './normalIndexMap';
 export default function normalFind(source, pattern, fromIndex = 0) {
   const regex = /\s+/g;
 
-  const normalize = text => {
-    return text.replace(regex, ' ');
-  };
+  const normalize = text => text.replace(regex, ' ');
 
   const nSource = normalize(source);
   const nPattern = normalize(pattern);

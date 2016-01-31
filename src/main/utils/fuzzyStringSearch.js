@@ -1,5 +1,5 @@
 import DiffMatchPatch from 'diff-match-patch';
-import {DMP_THRESHOLD, DMP_DISTANCE} from './../constants.js';
+import { DMP_THRESHOLD, DMP_DISTANCE } from './../constants.js';
 
 /**
  * @param {string} source
@@ -19,7 +19,8 @@ export default function fuzzyStringSearch(source, pattern, location, word = true
   if (start !== -1) {
     const end = start + pattern.length;
     return {
-      match: word ? source.slice(start, end + source.slice(end).search(/\s/)) : source.slice(start, end),
+      match: word ? source.slice(start, end + source.slice(end).search(/\s/)) :
+          source.slice(start, end),
       start,
     };
   }

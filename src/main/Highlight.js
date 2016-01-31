@@ -68,15 +68,9 @@ export default class Highlight {
    * @returns {object}
    */
   getBoundingClientRect() {
-    const rects = this.nodes.map(node => {
-      return node.getBoundingClientRect();
-    });
+    const rects = this.nodes.map(node => node.getBoundingClientRect());
 
-    const getBound = (side, op) => {
-      return op(...rects.map(rect => {
-        return rect[side];
-      }));
-    };
+    const getBound = (side, op) => op(...rects.map(rect => rect[side]));
 
     const top = getBound('top', Math.min);
     const right = getBound('right', Math.max);
@@ -119,9 +113,7 @@ export default class Highlight {
    * @returns {boolean}
    */
   hasClass(className) {
-    return this.nodes.some(node => {
-      return node.classList.contains(className);
-    });
+    return this.nodes.some(node => node.classList.contains(className));
   }
 
   /**
@@ -141,9 +133,7 @@ export default class Highlight {
    * @returns {boolean}
    */
   hasAttribute(name) {
-    return this.nodes.some(node => {
-      return node.hasAttribute(name);
-    });
+    return this.nodes.some(node => node.hasAttribute(name));
   }
 
   /**

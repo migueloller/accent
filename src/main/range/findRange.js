@@ -13,7 +13,8 @@ export default function findRange(searchValue, fromIndex = 0) {
   if (index !== -1) {
     const startContainer = getTextNodeFromOffset(getNextTextNode(document.body), index);
     const startOffset = index - bodyIndexOf(startContainer);
-    const endContainer = getTextNodeFromOffset(startContainer, startOffset + searchValue.length, true);
+    const endContainer = getTextNodeFromOffset(startContainer,
+        startOffset + searchValue.length, true);
     const endOffset = startContainer === endContainer ?
         startOffset + searchValue.length : bodyIndexOf(startContainer) +
         startOffset + searchValue.length - bodyIndexOf(endContainer);

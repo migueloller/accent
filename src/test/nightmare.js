@@ -1,1 +1,1 @@
-window.Highlighter = require('../../build/accent.js');
+window.Accent = require('../../lib/main/Highlighter.js');
