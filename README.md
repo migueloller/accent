@@ -31,7 +31,7 @@ npm install accent --save
 # Usage
 Bundle with [browserify](http://browserify.org/) if you're building a project with [node](https://nodejs.org/).
 
-Or, if making a static website, paste this line of HTML into your code:
+Or, paste this line of HTML into your code:
 ```html
 <script src="https://www.brcdn.org/accent/latest/?standalone=Accent"></script>
 ```

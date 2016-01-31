@@ -1,7 +1,7 @@
 {
   "name": "accent",
   "description": "A simple library for serializable highlights.",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": "Miguel Oller <miguel@getshortweb.com>",
   "license": "MIT",
   "repository": {
