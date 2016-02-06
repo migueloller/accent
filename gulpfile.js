@@ -40,9 +40,7 @@ gulp.task('nightmare', ['babel'], () => {
     fullscreen: true,
   });
 
-  nightmare
-    .goto('https://www.example.com')
-    .then(() => undefined);
+  return nightmare.goto('http://www.example.com/');
 });
 
 gulp.task('default', ['lint'], () => {

@@ -1,3 +1,4 @@
+import isText from './utils/isText.js';
 import getNextTextNode from './utils/getNextTextNode.js';
 import serializeRange from './range/serializeRange.js';
 import highlightRange from './range/highlightRange.js';
@@ -11,10 +12,11 @@ export default class Highlight {
    */
   constructor(range) {
     const sc = range.startContainer;
-    const firstTextNode = sc.nodeType === Node.TEXT_NODE ? sc : getNextTextNode(sc);
+    const isStartText = isText(range.startContainer);
+    const firstTextNode = isStartText ? sc : getNextTextNode(sc);
 
     this.text = range.toString();
-    this.index = bodyIndexOf(firstTextNode) + range.startOffset;
+    this.index = bodyIndexOf(firstTextNode) + (isStartText ? range.startOffset : 0);
     this.range = serializeRange(range);
     this.nodes = [];
 

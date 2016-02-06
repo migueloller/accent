@@ -24,7 +24,7 @@ export default class Queue {
    * @param {function} func
    * @param {number} [time]
    */
-  add(func, time = 5) {
+  add(func, time = 0) {
     return new Promise(resolve => {
       this.queue.push({ func, time, resolve });
 
