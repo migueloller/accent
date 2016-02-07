@@ -6,7 +6,7 @@ import normalFind from './utils/normalFind.js';
 import deserializeRange from './range/deserializeRange.js';
 import fuzzyStringSearch from './utils/fuzzyStringSearch.js';
 
-class Highlighter {
+export default class Highlighter {
   queue = new Queue();
 
   /**
@@ -100,6 +100,3 @@ class Highlighter {
     });
   }
 }
-
-// Not using es6 `export` because of issues with Browserify standalone options.
-module.exports = Highlighter;

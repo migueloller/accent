@@ -26,6 +26,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "babel-register": "^6.4.3",
     "browserify": "^13.0.0",
+    "chai": "^3.5.0",
     "coveralls": "^2.11.6",
     "eslint-config-airbnb": "^4.0.0",
     "eslint-plugin-react": "^3.16.1",
@@ -39,15 +40,16 @@
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   },
-  "main": "./lib/main/Highlighter.js",
+  "main": "./lib/accent.js",
   "files": [
     "lib/",
     "dist/"
   ],
   "scripts": {
-    "prepublish": "gulp browserify",
+    "prepublish": "npm test; gulp browserify",
     "gulp": "gulp",
-    "test": "mocha --compilers js:babel-register",
+    "lint": "gulp lint",
+    "test": "npm run lint; mocha -R spec --recursive --compilers js:babel-register",
     "coveralls": "babel-node ./node_modules/.bin/isparta cover _mocha --report lcovonly -- -R spec --recursive && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   }
 }

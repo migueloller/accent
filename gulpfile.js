@@ -20,8 +20,8 @@ gulp.task('babel', () =>
 
 gulp.task('browserify', ['babel'], () =>
   browserify({
-    entries: './lib/Highlighter.js',
-    standalone: 'Accent',
+    entries: './lib/accent.js',
+    standalone: 'accent',
   })
     .bundle()
     .pipe(source('./accent.js'))
