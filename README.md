@@ -1,6 +1,10 @@
 # accent
 A simple library for serializable highlights.
 
+[![Build Status](https://travis-ci.org/migueloller/accent.svg)](https://travis-ci.org/migueloller/accent)
+[![npm version](https://badge.fury.io/js/accent.svg)](https://badge.fury.io/js/accent)
+[![Coverage Status](https://coveralls.io/repos/github/migueloller/accent/badge.svg)](https://coveralls.io/github/migueloller/accent)
+
 ```js
 import Accent from 'accent';
 
