@@ -1,10 +1,5 @@
-# accent
+# accent [![npm](https://img.shields.io/npm/v/accent.svg)](https://www.npmjs.com/package/accent) [![Build Status](https://travis-ci.org/migueloller/accent.svg?branch=master)](https://travis-ci.org/migueloller/accent) [![codecov.io](https://codecov.io/github/migueloller/accent/coverage.svg?branch=master)](https://codecov.io/github/migueloller/accent?branch=master) [![Gitter](https://badges.gitter.im/migueloller/accent.svg)](https://gitter.im/migueloller/accent?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 A simple library for serializable highlights.
-
-[![Build Status](https://travis-ci.org/migueloller/accent.svg?branch=master)](https://travis-ci.org/migueloller/accent)
-[![npm version](https://badge.fury.io/js/accent.svg)](https://badge.fury.io/js/accent)
-[![Coverage Status](https://coveralls.io/repos/github/migueloller/accent/badge.svg?branch=master)](https://coveralls.io/github/migueloller/accent?branch=master)
-[![Gitter](https://badges.gitter.im/migueloller/accent.svg)](https://gitter.im/migueloller/accent?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 ```js
 import Accent from 'accent';
@@ -33,7 +28,8 @@ accent.highlightFromString('Hello, world!')
 npm install accent --save
 ```
 
-## accent API
+## Highlighter API
+Let `accent` represent an instance of `Highlighter`.
 
 ### Default Behavior
 By default, when a highlight is clicked it will gain focus and a click to any element except the highlight's will cause it to lose focus. A focused highlight has the class `accent--focus`.
