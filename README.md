@@ -29,7 +29,7 @@ npm install accent --save
 ```
 
 ## Highlighter API
-Let `accent` represent an instance of `Highlighter`.
+`accent` is an instance of `Highlighter`.
 
 ### Default Behavior
 By default, when a highlight is clicked it will gain focus and a click to any element except the highlight's will cause it to lose focus. A focused highlight has the class `accent--focus`.
@@ -112,14 +112,14 @@ accent.string('Example').then(highlight => {
 })
 ```
 
-### accent.highlights([callback])
-Returns an array of all the highlights. The optional function `callback` will be passed each highlight.
+### accent.highlights([callback]) `async`
+Returns an array of all the highlights. The optional function `callback` will be passed each highlight. If `callback` returns a promise then this function will wait for it to resolve.
 ```js
-const highlights = accent.highlights(highlight => {
+accent.highlights(highlight => {
   // do something with `highlight`...
+}).then(highlights => {
+  accent.serialize() === JSON.stringify(highlights.map(highlight => JSON.parse(highlight.serialize()))); // true
 });
-
-accent.serialize() === JSON.stringify(highlights.map(highlight => JSON.parse(highlight.serialize()))); // true
 ```
 
 ### accent.unmount()
@@ -163,7 +163,7 @@ The following events can be tracked with `accent.on(events, handler)`:
 `blur`      |`highlight`        |`highlight` just lost focus
 
 ### accent.off([events][, handler])
-Removes `handler` from `events`. `events` is a whitespace delimited string of event names. `handler` is a function that was previously registered with [`accent.on(events, handler)`](#accentonevents-handler). If only `events` if provided, all handlers will be removed from `events`. If no parameters are provided, all handlers are removed from all events. `handler` can only be provided together with `events`.
+Removes `handler` from `events`. `events` is a whitespace delimited string of event names. `handler` is a function that was previously registered with [`accent.on(events, handler)`](#accentonevents-handler). If only `events` is provided, all handlers will be removed from `events`. If no parameters are provided, all handlers are removed from all events. `handler` can only be provided together with `events`.
 ```js
 const handler = highlight => {};
 
@@ -180,7 +180,7 @@ accent.off(); // 0 events registered
 ```
 
 ## Highlight API
-Let `highlight` represent an instance of `Highlight`.
+Every `highlight` is an instance of `Highlight`.
 
 ### Default Behavior
 By default, when the mouse enters a highlight it will get the class `accent-hover` and will lose it when the mouse leaves.
@@ -259,7 +259,7 @@ The following events can be tracked with `highlight.on(events, handler[, useCapt
 > _**Note:** See https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent for more details on the `event` handler argument._
 
 ### highlight.off([events][, handler])
-Removes `handler` from `events`. `events` is a whitespace delimited string of event names. `handler` is a function that was previously registered with [`highlight.on(events, handler)`](#highlightonevents-handler-usecapture). If only `events` if provided, all handlers will be removed from `events`. If no parameters are provided, all handlers are removed from all events. `handler` can only be provided together with `events`.
+Removes `handler` from `events`. `events` is a whitespace delimited string of event names. `handler` is a function that was previously registered with [`highlight.on(events, handler)`](#highlightonevents-handler-usecapture). If only `events` is provided, all handlers will be removed from `events`. If no parameters are provided, all handlers are removed from all events. `handler` can only be provided together with `events`.
 ```js
 const handler = highlight => highlight.addClass('accent--green');
 
@@ -287,7 +287,7 @@ accent.string('Example').then(highlight => {
 ```
 
 ### highlight.scrollIntoView([duration])
-Scrolls the viewport so that this highlight's bounding rectangle is centered vertically and horizontally in the viewport. If passed a number `duration`, then the scroll will be smooth last `duration` ms.
+Scrolls the viewport so that this highlight's bounding rectangle is centered vertically and horizontally in the viewport. If passed a number `duration`, then the scroll will be linear and last `duration` ms.
 ```js
 accent.selection().then(highlight => {
   if (highlight) highlight.scrollIntoView();
@@ -334,35 +334,13 @@ accent.on('highlight', highlight => {
 });
 ```
 
-### highlight.hasAttribute(attributeName)
-Returns true if this highlight has attribute `attributeName`, else false. `attributeName` is a string and can't contain any whitespace characters.
+### highlight.attr(attributeName[, value])
+If `value` is passed, sets the value of the attribute `attributeName` to `value` in this highlight. If only `attributeName` is passed, returns the value of the attribute `attributeName` if this highlight contains it, else null. `attributeName` is a string and can't contain any whitespace characters.
 ```js
 accent.selection().then(highlight => {
   if (highlight) {
-    highlight.setAttribute('data-accent-id', '1');
-    highlight.hasAttribute('data-accent-id'); // true
-  }
-});
-```
-
-### highlight.getAttribute(attributeName)
-Returns the value of the attribute `attributeName` if this highlight contains it, else null. `attributeName` is a string and can't contain any whitespace characters.
-```js
-accent.selection().then(highlight => {
-  if (highlight) {
-    highlight.setAttribute('data-accent-id', '1');
-    highlight.getAttribute('data-accent-id'); // '1'
-  }
-});
-```
-
-### highlight.setAttribute(attributeName[, value])
-Sets the value of the attribute `attributeName` to `value` to this highlight. `attributeName` is a string and can't contain any whitespace characters. `value` is an optional string which is empty by default.
-```js
-accent.selection().then(highlight => {
-  if (highlight) {
-    highlight.setAttribute('data-accent-id', '1')
-    highlight.getAttribute('data-accent-id'); // '1'
+    highlight.attr('data-accent-id', '1');
+    highlight.attr('data-accent-id'); // '1'
   }
 });
 ```
@@ -372,10 +350,36 @@ Removes the attribute `attributeName` from this highlight. `attributeName` is a 
 ```js
 accent.selection().then(highlight => {
   if (highlight) {
-    highlight.setAttribute('data-accent-id', '1');
-    highlight.hasAttribute('data-accent-id'); // true
+    highlight.attr('data-accent-id', '1');
+    highlight.attr('data-accent-id'); // '1'
     highlight.removeAttribute('data-accent-id');
-    highlight.hasAttribute('data-accent-id'); // false
+    highlight.attr('data-accent-id'); // null
+  }
+});
+```
+
+### highlight.data(key[, value])
+Alias for ``highlight.attr(`data-${key}`, value)``.
+```js
+accent.selection().then(highlight => {
+  if (highlight) {
+    highlight.attr('data-accent-id', '1');
+    highlight.data('accent-id'); // '1'
+    highlight.data('accent-id', '2');
+    highlight.attr('data-accent-id'); // '2'
+  }
+});
+```
+
+### highlight.removeData(key)
+Alias for ``highlight.removeAttribute(`data-${key}`)``.
+```js
+accent.selection().then(highlight => {
+  if (highlight) {
+    highlight.attr('data-accent-id', '1');
+    highlight.attr('data-accent-id'); // '1'
+    highlight.removeData('accent-id');
+    highlight.attr('data-accent-id'); // null
   }
 });
 ```
