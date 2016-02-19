@@ -1,5 +1,5 @@
 import DiffMatchPatch from 'diff-match-patch';
-import { DMP_THRESHOLD, DMP_DISTANCE } from './../constants.js';
+import { DMP_THRESHOLD, DMP_DISTANCE } from './../Constants.js';
 
 /**
  * @param {string} source

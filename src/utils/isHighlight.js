@@ -1,4 +1,4 @@
-import { HIGHLIGHT_TAG } from './../constants.js';
+import { HIGHLIGHT_TAG } from './../Constants.js';
 
 /**
  * @param {Node} node

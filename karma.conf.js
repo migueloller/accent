@@ -1,11 +1,13 @@
 /* eslint-disable func-names */
 module.exports = function (config) {
   config.set({
-    frameworks: ['mocha', 'browserify'],
-    files: ['./src/**/*.js', './test/**/*.js'],
+    frameworks: ['mocha', 'browserify', 'fixture'],
+    files: ['./src/**/*.js', './test/**/*'],
     preprocessors: {
       './src/**/*.js': ['browserify'],
       './test/**/*.js': ['browserify'],
+      './test/**/*.html': ['html2js'],
+      './test/**/*.json': ['json_fixtures'],
     },
     browsers: ['PhantomJS'],
     browserify: {
@@ -13,7 +15,10 @@ module.exports = function (config) {
         instrumenter: require('isparta'),
       }), 'babelify'],
     },
-    reporters: ['mocha', 'coverage'],
+    jsonFixturesPreprocessor: {
+      variableName: '__json__',
+    },
+    reporters: ['mocha'],
     coverageReporter: {
       reporters: [
         { type: 'text' },
